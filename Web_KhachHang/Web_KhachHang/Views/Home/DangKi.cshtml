@@ -1,0 +1,100 @@
+﻿@model Web_KhachHang.ViewModels.KhachHang_Account;
+
+@{
+    ViewData["Title"] = "DangKi";
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+
+
+
+<link rel="stylesheet" href="~/css/register.css">
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<form method="post" asp-controller="Home" asp-action="DangKi">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container-register">
+        <div class="register">
+            <h1 class="register-heading">REGISTER</h1>
+            <div class="container-btn-social">
+                <button class="register-social">
+                    <i class='bx bxl-google register-social-ic'></i>
+                    <span class="register-social-text">Đăng ký với Google</span>
+                </button>
+            </div>
+            <div class="register-or"><span>Or</span></div>
+
+            <div class="container">
+                <div class="row register-container col-lg-12 col-md-12" style="margin:0px; padding:0px;">
+                    <label asp-for="KhachHang.TenKhachHang" class="register-labelname col-12">Tên khách hàng</label>
+                    <input asp-for="KhachHang.TenKhachHang" type="text" class="register-ipname col-12" placeholder="Full name">
+                    <span asp-validation-for="KhachHang.TenKhachHang" class="text-danger"></span>
+                </div>
+
+                <div class="row register-container">
+                    <div class="col-md-6">
+                        <label asp-for="KhachHang.NgaySinh" class="register-label col-12">Ngày Sinh</label>
+                        <input asp-for="KhachHang.NgaySinh" type="date" class="register-input col-12" placeholder="dd/mm/yyyy" />
+                        <span asp-validation-for="KhachHang.NgaySinh" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="KhachHang.SoDienThoai" class="register-labelname col-12">Số Điện Thoại</label>
+                        <input asp-for="KhachHang.SoDienThoai " type="text" class="register-ipname col-12" placeholder="">
+                        <span asp-validation-for="KhachHang.SoDienThoai" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row register-container">
+
+                    <div class="col-md-6">
+                        <label asp-for="KhachHang.DiaChi" class="register-labelname col-12">Địa Chỉ</label>
+                        <input asp-for="KhachHang.DiaChi " type="text" class="register-ipname col-12" placeholder="">
+                        <span asp-validation-for="KhachHang.DiaChi" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Account.Email" class="register-labelname col-12">Email</label>
+                        <input asp-for="Account.Email" type="text" class="register-ipname col-12" placeholder="NguyenVanA@gmail.com">
+                        <span asp-validation-for="Account.Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row register-container">
+                    <div class="col-md-6">
+                        <label asp-for="Account.Password" class="register-label col-12">Mật khẩu</label>
+                        <input asp-for="Account.Password" type="password" id="password" class="register-input col-12" placeholder="">
+                        <span asp-validation-for="Account.Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password" class="register-label col-12">Nhập lại mật khẩu</label>
+                        <input type="password" id="confirm_password" class="register-input col-12" placeholder="">
+                        <span validation-for="confirm_password" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" value="Register" class="register-btn btn btn-primary col-12">Đăng ký</button>
+                <!--Hiện thông báo-->
+                <div id="thongBao" data-tbao="@ViewBag.ThongBao"></div>
+                <script src="~/js/Alert_Them_Sua_Xoa_ThatBai.js"></script>
+                
+                <p class="login-question">
+                    <a asp-action="DangNhap" asp-controller="Home" class="login-text">Quay lại đăng nhập</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    
+</form>
+
+<script language="javascript">
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Mật khẩu không trùng khớp !");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>

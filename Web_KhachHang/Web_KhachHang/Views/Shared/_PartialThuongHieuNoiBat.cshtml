@@ -1,0 +1,106 @@
+﻿@model List<Web_KhachHang.ViewModels.Ma_Ten>
+@using Web_KhachHang.Models
+@{
+    CuaHangBanQuanAoContext db = new CuaHangBanQuanAoContext();
+    // số lượng thực tế của lstThuongHieu
+    var soLuong = Model.Count;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="product-info">
+            <div class="nav-main">
+                <!-- Tab Nav -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    @for (var i = 0; i < soLuong; i++)
+                    {
+                        // Tạo id
+                        var id = "ThuongHieu" + Model[i].Ma;
+
+                        var class_active = "";
+                        if (i == 0)
+                        {
+                            class_active = "active";
+                        }
+                        <li class="nav-item"><a class="nav-link @class_active" data-toggle="tab" href="#@id" role="tab">@Model[i].Ten</a></li>
+                    }
+                </ul>
+                <!--/ End Tab Nav -->
+            </div>
+            <div class="tab-content" id="myTabContent">
+                @for (var i = 0; i < soLuong; i++)
+                {
+                    // lstSanPham của hãng x
+                    List<SanPham> lstSanPham = db.SanPhams.Where(x => x.MaHangSx == Model[i].Ma).ToList();
+
+                    // Tạo id
+                    var id = "ThuongHieu" + Model[i].Ma;
+
+                    var class_active = "";
+                    if (i == 0)
+                    {
+                        class_active = "active";
+                    }
+                    <!-- Start Single Tab -->
+                    <div class="tab-pane fade show @class_active" id="@id" role="tabpanel">
+                        <div class="tab-single">
+                            <div class="row">
+                                <!--Hiển thị các sản phẩm của hãng x-->
+                                @foreach (var item in lstSanPham)
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                                                    <!--Ảnh đại diện-->
+                                                    <img class="default-img" src="@Url.Content("~/images/AnhSP/"+ item.AnhDaiDien)" alt="#">
+
+                                                    <!--Ảnh sản phẩm hover-->
+                                                    @{
+                                                        var Anh1 = db.AnhSps.Where(x => x.MaSp == item.MaSp).FirstOrDefault();
+                                                    }
+                                                    @if (Anh1 != null)
+                                                    {
+                                                        <img class="hover-img" src="@Url.Content("~/images/AnhSP/"+ @Anh1.TenFileAnh)" alt="#">
+                                                    }
+
+                                                    <!--Sản phẩm hot-->
+                                                    @if (@item.BestSeller)
+                                                    {
+                                                        <span class="out-of-stock">Hot</span>
+                                                    }
+                                                </a>
+                                                <div class="button-head">
+                                                    <div class="product-action">
+                                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                        <!--
+                                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                        -->
+                                                    </div>
+                                                    <div class="product-action-2">
+                                                        <a title="Add to cart" href="#">Add to cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h3><a asp-action="" asp-controller="" asp-route-id="">@item.TenSp</a></h3>
+                                                <div class="product-price">
+                                                    <!--
+                                                    <span class="old">$60.00</span>
+                                                    -->
+                                                    <span style="color:red;">@item.GiaNhoNhat.ToString() - @item.GiaLonNhat.ToString() </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Single Tab -->
+                }
+            </div>
+        </div>
+    </div>
+</div>

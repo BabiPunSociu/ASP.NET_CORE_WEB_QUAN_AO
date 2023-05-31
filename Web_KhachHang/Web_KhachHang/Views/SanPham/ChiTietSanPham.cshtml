@@ -1,0 +1,209 @@
+﻿@using Web_KhachHang.Models
+@using Web_KhachHang.ViewModels
+@model SanPham
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+
+@{
+    List<AnhSp> AnhSp = ViewBag.AnhSp;
+    List<chitietsp> lstChiTietSP = ViewBag.lstChiTietSP;
+    List<MauSac> lstMau = ViewBag.lstMau;
+    List<KichThuoc> lstKichThuoc = ViewBag.lstKichThuoc;
+}
+
+<section class="product-area shop-sidebar shop section">
+    <!--Detail Product-->
+    <div class="container">
+
+        <div class="modal-body">
+            <div class="row no-gutters">
+                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Product Slider -->
+                    <div class="product-gallery">
+                        <div class="quickview-slider-active">
+                            <div class="single-slider">
+                                <img style="border-radius:15px;" src="@Url.Content("~/images/AnhSP/"+Model.AnhDaiDien)" alt="#">
+                            </div>
+                            @foreach (var item in AnhSp)
+                            {
+                                <div class="single-slider">
+                                    <img style="border-radius:15px;" src="@Url.Content("~/images/AnhSP/"+item.TenFileAnh)" alt="#">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- End Product slider -->
+                </div>
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <div class="quickview-content">
+                        <h2>@Model.TenSp</h2>
+                        <div class="quickview-ratting-review">
+                            <div class="quickview-ratting-wrap">
+                                <div class="quickview-ratting">
+                                    <i class="yellow fa fa-star"></i>
+                                    <i class="yellow fa fa-star"></i>
+                                    <i class="yellow fa fa-star"></i>
+                                    <i class="yellow fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <a href="#"> (1 customer review)</a>
+                            </div>
+                            <div class="quickview-stock">
+                                <span><i class="fa fa-check-circle-o"></i> Còn hàng </span>
+                            </div>
+                        </div>
+                        <h3 id="GiaBan">@Model.GiaNhoNhat - @Model.GiaLonNhat</h3>
+                        <div class="quickview-peragraph">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
+                        </div>
+
+
+                        <div class="size">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <h5 class="title">Chọn kích thước</h5>
+                                    <select style="width:100%; display:block;">
+                                        @foreach (var item in lstKichThuoc)
+                                        {
+                                            <option data-makichthuoc="@item.MaKichThuoc">@item.KichThuoc1</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <h5 class="title">Chọn màu sắc</h5>
+                                    <select style="width:100%; display:block;">
+                                        @foreach (var item in lstMau)
+                                        {
+                                            <option data-maMau="@item.MaMauSac">@item.TenMauSac</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <!-- Input Order -->
+                            <div class="input-group">
+                                <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                        <i class="ti-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="1000" value="1">
+                                <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                        <i class="ti-plus"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                            <span style="margin-left:10px;"> 1000 Sản phẩm có sẵn </span>
+                            <!--/ End Input Order -->
+                        </div>
+
+                        <div class="add-to-cart" style="display:block; margin-top:10px; margin-left:0px;">
+                            <a href="#" style="border-radius:15px;" class="btn">Add to cart</a>
+                            <!--
+                            <a href="#" class="btn min"><i class="ti-heart"></i></a>
+                            <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                            -->
+                        </div>
+                        <div class="default-social">
+                            <h4 class="share-now">Share:</h4>
+                            <ul>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--End Quick View-->
+    </div>
+    <div class="container">
+        <div>
+            <div class="">CHI TIẾT SẢN PHẨM</div>
+            <div>
+                <div class="row">
+                    <label class="col-3">Danh mục</label>
+                    <p class="col-9">@Model.MaLoaiNavigation.Loai</p>
+                </div>
+                <div class="row">
+                    <label class="col-3">Chất liệu</label>
+                    <p class="col-9">@Model.MaChatLieuNavigation.ChatLieu1</p>
+                </div>
+                <div class="row">
+                    <label class="col-3">Quốc gia</label>
+                    <p class="col-9">@Model.MaNuocNavigation.TenNuoc</p>
+                </div>
+                <div class="row">
+                    <label class="col-3">Thương hiệu</label>
+                    <p class="col-9">@Model.MaHangSxNavigation.TenHangSx</p>
+                </div>
+                <div class="row">
+                    <label class="col-3">Đặc tính</label>
+                    <p class="col-9">@Model.MaDtNavigation.TenDt</p>
+                </div>
+                @if (Model.ThoiGianBaoHanh != null)
+                {
+                    <div class="row">
+                        <label class="col-3">Bảo hành</label>
+                        <p class="col-9">@Model.ThoiGianBaoHanh</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div>
+            <div class="">MÔ TẢ SẢN PHẨM</div>
+
+            <p style="padding:0px; margin:0px; border:solid; white-space: pre-wrap; word-break: break-word; background:transparent;">
+                váy buộc dây chéo cổ
+                chất liệu thô 1 lớp
+                Freesize &lt;55kg
+                😍😍😍 Shop CAM KẾT 😍😍😍
+                ✔ Về sản phẩm: Shop cam kết cả về CHẤT LIỆU cũng như HÌNH DÁNG ( đúng với những gì được nêu bật trong phần mô tả sản phẩm).
+                ✔ Về giá cả : Shop nhập với số lượng nhiều và trực tiếp nên chi phí sẽ là RẺ NHẤT nhé.
+                ✔ Về dịch vụ: Shop sẽ cố gắng trả lời hết những thắc mắc xoay quanh sản phẩm nhé.
+                ✔ Thời gian chuẩn bị hàng: Hàng có sẵn, thời gian chuẩn bị tối ưu nhất.
+
+                🍃🍃🍃Quyền Lợi của KháchHàng 🍃🍃🍃
+                ✔ Chính sách bao đổi trả hàng miễn phí khi sản phẩm kém chất lượng và không giống hình, nhầm size, số lượng .
+                ✔ Khách hàng cũ : Mua lần thứ 2 trở đi sẽ được nhận mã giảm giá của shop
+                &lt;&lt; ib ngay cho mình nha&gt;&gt; để nhận nào .
+
+                ➡ LƯU Ý KHI SỬ DỤNG CÁC SẢN PHẨM CỦA SHOP
+                - Đối với sản phẩm đa dạng về chất liệu, kiểu dáng cách bảo quản sản phẩm tốt nhất là giặt tay với bột (nước) giặt nhẹ để giữ được độ bền của vải, tránh bị phai màu từ các loại quần áo khác.
+                - Đối với những sản phẩm có thể giặt máy, chỉ nên để ở chế độ giặt nhẹ, hoặc mức trung bình và nên phân loại sản phẩm cùng màu và cùng loại vải khi giặt.
+                - Nên phơi sản phẩm ở nơi thoáng mát, tránh ánh nắng trực tiếp dễ bị phai bạc màu, nên làm khô quần áo bằng cách phơi ở những điểm đón gió sẽ giữ được màu vải tốt hơn.
+
+                @Model.GioiThieuSanPham
+            </p>
+        </div>
+    </div>
+    <!-- Detail Product-->
+</section>
+<!--Sản phẩm bán chạy-->
+<div class="product-area most-popular section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Sản phẩm bán chạy</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!--Sản phẩm bán chạy-->
+                @await Html.PartialAsync("_PartialSanPhamBanChay", (List<SanPham>)ViewBag.lstSanPhamBanChay)
+            </div>
+        </div>
+    </div>
+</div>
+

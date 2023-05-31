@@ -1,0 +1,375 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital@1&display=swap" rel="stylesheet">
+
+<!-- Start Small Banner  -->
+<section class="small-banner section">
+	<div class="container-fluid mt-5 mb-4" style="text-align:center; font-family:'Roboto Serif', serif; font-size:50px">
+		Khám phá thế giới thời trang nữ
+	</div>
+	<div class="container-fluid">
+		<!-- 4 Loại sản phẩm theo đặc tính -->
+		@await Html.PartialAsync("_PartialBannerDactinh", (List<Web_KhachHang.ViewModels.Ma_Ten>)ViewBag.top4DacTinh)
+	</div>
+</section>
+<!-- End Small Banner -->
+
+<!-- Start Product Area -->
+<div class="product-area section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Thương hiệu nổi bật</h2>
+				</div>
+			</div>
+		</div>
+		<!--Thương hiệu nổi bật-->
+		@await Html.PartialAsync("_PartialThuongHieuNoiBat", (List<Web_KhachHang.ViewModels.Ma_Ten>)ViewBag.lstThuongHieu)
+	</div>
+</div>
+<!-- End Product Area -->
+
+
+@*
+<!-- Start Midium Banner  -->
+<section class="midium-banner">
+	<div class="container">
+		<div class="row">
+			<!-- Single Banner  -->
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="single-banner">
+					<img src="https://via.placeholder.com/600x370" alt="#">
+					<div class="content">
+						<p>Man's Collectons</p>
+						<h3>Man's items <br>Up to<span> 50%</span></h3>
+						<a href="#">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<!-- /End Single Banner  -->
+			<!-- Single Banner  -->
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="single-banner">
+					<img src="https://via.placeholder.com/600x370" alt="#">
+					<div class="content">
+						<p>shoes women</p>
+						<h3>mid season <br> up to <span>70%</span></h3>
+						<a href="#" class="btn">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<!-- /End Single Banner  -->
+		</div>
+	</div>
+</section>
+<!-- End Midium Banner -->
+*@
+
+
+
+<!-- Start Most Popular -->
+<div class="product-area most-popular section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Sản phẩm bán chạy</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<!--Sản phẩm bán chạy-->
+				@await Html.PartialAsync("_PartialSanPhamBanChay", (List<SanPham>)ViewBag.lstSanPhamBanChay)
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Most Popular Area -->
+@*
+<!-- Start Shop Home List  -->
+<section class="shop-home-list section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="row">
+					<div class="col-12">
+						<div class="shop-section-title">
+							<h1>On sale</h1>
+						</div>
+					</div>
+				</div>
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h4 class="title"><a href="#">Licity jelly leg flat Sandals</a></h4>
+								<p class="price with-discount">$59</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$44</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$89</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="row">
+					<div class="col-12">
+						<div class="shop-section-title">
+							<h1>Best Seller</h1>
+						</div>
+					</div>
+				</div>
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$65</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$33</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$77</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="row">
+					<div class="col-12">
+						<div class="shop-section-title">
+							<h1>Top viewed</h1>
+						</div>
+					</div>
+				</div>
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$22</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$35</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+				<!-- Start Single List  -->
+				<div class="single-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="list-image overlay">
+								<img src="https://via.placeholder.com/115x140" alt="#">
+								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-12 no-padding">
+							<div class="content">
+								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
+								<p class="price with-discount">$99</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single List  -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Shop Home List  -->
+*@
+@*
+<!-- Start Cowndown Area -->
+<section class="cown-down">
+	<div class="section-inner ">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 col-12 padding-right">
+					<div class="image">
+						<img src="https://via.placeholder.com/750x590" alt="#">
+					</div>
+				</div>
+				<div class="col-lg-6 col-12 padding-left">
+					<div class="content">
+						<div class="heading-block">
+							<p class="small-title">Deal of day</p>
+							<h3 class="title">Beatutyful dress for women</h3>
+							<p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
+							<h1 class="price">$1200 <s>$1890</s></h1>
+							<div class="coming-time">
+								<div class="clearfix" data-countdown="2021/02/30"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /End Cowndown Area -->
+*@
+@*
+<!-- Start Shop Blog  -->
+<section class="shop-blog section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>From Our Blog</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Blog  -->
+				<div class="shop-single-blog">
+					<img src="https://via.placeholder.com/370x300" alt="#">
+					<div class="content">
+						<p class="date">22 July , 2020. Monday</p>
+						<a href="#" class="title">Sed adipiscing ornare.</a>
+						<a href="#" class="more-btn">Continue Reading</a>
+					</div>
+				</div>
+				<!-- End Single Blog  -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Blog  -->
+				<div class="shop-single-blog">
+					<img src="https://via.placeholder.com/370x300" alt="#">
+					<div class="content">
+						<p class="date">22 July, 2020. Monday</p>
+						<a href="#" class="title">Man’s Fashion Winter Sale</a>
+						<a href="#" class="more-btn">Continue Reading</a>
+					</div>
+				</div>
+				<!-- End Single Blog  -->
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<!-- Start Single Blog  -->
+				<div class="shop-single-blog">
+					<img src="https://via.placeholder.com/370x300" alt="#">
+					<div class="content">
+						<p class="date">22 July, 2020. Monday</p>
+						<a href="#" class="title">Women Fashion Festive</a>
+						<a href="#" class="more-btn">Continue Reading</a>
+					</div>
+				</div>
+				<!-- End Single Blog  -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Shop Blog  -->
+*@

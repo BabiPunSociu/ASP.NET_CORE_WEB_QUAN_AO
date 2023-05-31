@@ -1,0 +1,31 @@
+﻿
+@model List<Web_KhachHang.ViewModels.Ma_Ten>
+
+@{
+    var so = 12/Model.Count();
+}
+
+<style>
+    div.DacTinh > a {
+        display: flex;
+        justify-content: center;
+        font-family: 'Roboto Serif', serif;
+        border-radius: 10px;
+        border: solid;
+        background: transparent;
+        color: red;
+    }
+</style>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <!-- Single Banner  -->
+        <div class="col-lg-@so col-md-6 col-12 DacTinh">
+            <a class="btn btn-danger" asp-action="SanPhamTheoDacTinh" asp-controller="SanPham" asp-route-id="@item.Ma">
+                @item.Ten
+            </a>
+        </div>
+        <!-- /End Single Banner  -->
+    }
+</div>

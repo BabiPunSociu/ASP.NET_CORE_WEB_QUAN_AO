@@ -1,0 +1,44 @@
+﻿@model List<SanPham>
+@{
+    CuaHangBanQuanAoContext db = new CuaHangBanQuanAoContext();
+    
+}
+
+<div class="owl-carousel popular-slider">
+    @foreach (var sp in Model)
+    {
+        <!-- Start Single Product -->
+        <div class="single-product">
+            <div class="product-img">
+                <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@sp.MaSp">
+                    <!--Ảnh đại diện sản phẩm-->
+                    <img class="default-img" src="@Url.Content("~/images/AnhSP/"+ sp.AnhDaiDien)" alt="#">
+                    <!--Ảnh sản phẩm hover-->
+                    @{
+                        var Anh1 = db.AnhSps.Where(x => x.MaSp == sp.MaSp).FirstOrDefault();
+                    }
+                    @if (Anh1 != null)
+                    {
+                        <img class="hover-img" src="@Url.Content("~/images/AnhSP/"+ @Anh1.TenFileAnh)" alt="#">
+                    }
+                    <!--hot-->
+                    <span class="out-of-stock">Hot</span>
+                </a>
+                <div class="button-head">
+                    <div class="product-action">
+                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                    </div>
+                    <div class="product-action-2">
+                        <a title="Add to cart" href="#">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-content">
+                <h3><a href="product-details.html">@sp.TenSp</a></h3>
+                <div class="product-price">
+                    <span style="color:red;">@sp.GiaNhoNhat.ToString() - @sp.GiaLonNhat.ToString() </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

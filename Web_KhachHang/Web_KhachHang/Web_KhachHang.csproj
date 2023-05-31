@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\themify.svg" />
+    <None Include="wwwroot\js\active.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\easing.js" />
+    <None Include="wwwroot\js\facnybox.min.js" />
+    <None Include="wwwroot\js\finalcountdown.min.js" />
+    <None Include="wwwroot\js\flex-slider.js" />
+    <None Include="wwwroot\js\gmap.min.js" />
+    <None Include="wwwroot\js\jquery-migrate-3.0.0.js" />
+    <None Include="wwwroot\js\jquery-ui.min.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\magnific-popup.js" />
+    <None Include="wwwroot\js\map-script.js" />
+    <None Include="wwwroot\js\nicesellect.js" />
+    <None Include="wwwroot\js\onepage-nav.min.js" />
+    <None Include="wwwroot\js\owl-carousel.js" />
+    <None Include="wwwroot\js\popper.min.js" />
+    <None Include="wwwroot\js\scrollup.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\slicknav.min.js" />
+    <None Include="wwwroot\js\waypoints.min.js" />
+    <None Include="wwwroot\js\ytplayer.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Captcha" Version="4.4.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.2" />
+    <PackageReference Include="X.PagedList" Version="8.4.7" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
+  </ItemGroup>
+
+</Project>

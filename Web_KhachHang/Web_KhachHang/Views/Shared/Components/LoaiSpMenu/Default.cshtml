@@ -1,0 +1,11 @@
+﻿@model IEnumerable<LoaiSp>
+
+<div class="all-category">
+	<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+	<ul class="main-category">
+		@foreach(var item in Model)
+		{
+			<li><a asp-action="" asp-controller="" >@item.Loai</a></li>
+		}
+	</ul>
+</div>

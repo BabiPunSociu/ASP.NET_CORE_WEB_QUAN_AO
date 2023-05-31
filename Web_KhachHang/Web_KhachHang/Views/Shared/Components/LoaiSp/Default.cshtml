@@ -1,0 +1,18 @@
+﻿@model IEnumerable<LoaiSp>
+
+<div class="single-widget category">
+	<h3 class="title">Loại sản phẩm</h3>
+	<ul class="categor-list">
+		@foreach(var item in Model)
+		{
+			<li><a asp-action="SanPhamTheoLoai" asp-controller="SanPham" asp-route-id="@item.MaLoai">@item.Loai</a></li>
+		}
+		@*
+		<li><a href="#">jacket</a></li>
+		<li><a href="#">jeans</a></li>
+		<li><a href="#">sweatshirts</a></li>
+		<li><a href="#">trousers</a></li>
+		<li><a href="#">kitwears</a></li>
+		<li><a href="#">accessories</a></li>*@
+	</ul>
+</div>

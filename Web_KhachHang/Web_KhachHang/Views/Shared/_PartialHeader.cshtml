@@ -1,0 +1,114 @@
+﻿@using Web_KhachHang.Extension
+@using Web_KhachHang.Models
+
+
+@{
+    CuaHangBanQuanAoContext db = new CuaHangBanQuanAoContext();
+    var user = Context.Session.Get<KhachHang>("user");
+
+    var chiSoGioHang = 0;
+    if (user != null)
+    {
+        var lstGioHang = db.GioHangs.Where(x => x.MaKhachHang == user.MaKhachHang).ToList();
+        chiSoGioHang = lstGioHang.Count;
+    }
+}
+
+<!-- Topbar -->
+<div class="topbar" style="background-color:transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-12">
+                <!-- Top Left -->
+                <div class="top-left">
+                    <ul class="list-main">
+                        <li><i class="ti-headphone-alt" style="color:#333"></i> +84 97 1821 742</li>
+                        <li><i class="ti-email" style="color:#333"></i> Nguyendung281002@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-12">
+                <!-- Top Right -->
+                <div class="right-content">
+                    <ul class="list-main">
+                        @if (user != null)
+                        {
+                            <li><i class="ti-user"></i> <a asp-controller="Home" asp-action="ThongTinCaNhan"> @user.TenKhachHang </a></li>
+                            <li><i class="ti-power-off"></i><a asp-controller="Home" asp-action="DangXuat"> Đăng xuất </a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Topbar -->
+
+<div class="middle-inner" style="background-color:transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-12">
+                <!-- Logo -->
+                <div class="logo" style="margin:0px">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="logo" style="width:170px; height:69px;  object-fit:contain;"></a>
+                </div>
+
+                <!-- Search Form mobile -->
+                <div class="search-top">
+                    <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                    <div class="search-top">
+                        <form class="search-form">
+                            <input type="text" placeholder="Tìm sản phẩm..." name="search">
+                            <button value="search" type="submit"><i class="ti-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="mobile-nav"></div>
+            </div>
+
+            <!-- Search form desktop -->
+            <div class="col-lg-8 col-md-7 col-12" style="display:grid; align-items: center">
+                <div class="search-bar-top">
+                    <div class="search-bar">
+                        <form>
+                            <input name="search" placeholder="Tìm sản phẩm....." type="search">
+                            <button class="btnn"><i class="ti-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search form desktop -->
+
+
+            <div class="col-lg-2 col-md-3 col-12"
+                 style="display: flex; align-items: center; justify-content: center;">
+                <div class="right-bar" style="margin:auto; top:0px;">
+                    <!-- Hình trái tim -->
+                    <div class="sinlge-bar">
+                        <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Thông tin cá nhân -->
+
+                    <div class="sinlge-bar">
+                        @if (user != null)
+                        {
+                            <a asp-action="ThongTinCaNhan" asp-controller="Home" class="single-icon" data-toggle="tooltip" data-placement="bottom" title="Thông tin tài khoản">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="DangNhap" asp-controller="Home" class="single-icon" data-toggle="tooltip" data-placement="bottom" title="Login">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            </a>
+                        }
+                    </div>
+                    <div class="sinlge-bar shopping">
+                        <a asp-action="Index" asp-controller="GioHang" class="single-icon"><i class="ti-bag"></i> <span class="total-count"> @chiSoGioHang </span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
